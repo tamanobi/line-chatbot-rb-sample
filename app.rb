@@ -2,7 +2,40 @@ require 'sinatra'
 require 'line/bot'
 
 get '/' do
+    # list users up and display
     'hello'
+end
+
+get '/list/friends' do
+    File.open("friend.txt", "r") do |f|
+        f.each_line { |line|
+            puts line
+        }
+    end
+end
+
+get '/test/push' do
+    userId = ENV["LINE_TEST_USER_ID"]
+    message = {
+        type: 'text',
+        text: 'push message'
+    }
+    response = client.push_message(userId, message)
+    p "#{response.code} #{response.body}"
+end
+
+get '/test/profile' do
+    userId = ENV["LINE_TEST_USER_ID"]
+    response = client.get_profile(userId)
+    case response
+    when Net::HTTPSuccess then
+        contact = JSON.parse(response.body)
+        p contact['displayName']
+        p contact['pictureUrl']
+        p contact['statusMessage']
+    else
+        p "#{response.code} #{response.body}"
+    end
 end
 
 def client
@@ -35,6 +68,19 @@ post '/callback' do
         tf = Tempfile.open("content")
         tf.write(response.body)
       end
+    when Line::Bot::Event::Follow
+        message = [{
+          type: 'text',
+          text: '追加してくれてありがと！'
+        },
+        {
+          type: 'text',
+          text: event['source']['userId']
+        }]
+        File.open("friend.txt", "a") do |f|
+            f.puts event['source']['userId']+"\n"
+        end
+        client.reply_message(event['replyToken'], message)
     end
   }
 

@@ -1,0 +1,18 @@
+{
+  "name": "LINE Chatbot Sample",
+  "description": "Ruby app using LINE Messaging API",
+  "repository": "https://github.com/tamanobi/line-chatbot-rb-sample",
+  "env": {
+      "LINE_CHANNEL_SECRET" : {
+          "description": "A secret key for verifying the LINE account"
+      },
+      "LINE_CHANNEL_TOKEN" : {
+          "description": "A token for verifying the LINE account"
+      },
+      "LINE_TEST_USER_ID" : {
+          "description": "Your LINE User ID for push message test"
+      }
+  },
+  "keywords": ["ruby", "sinatra"],
+  "image": "heroku/ruby"
+}
