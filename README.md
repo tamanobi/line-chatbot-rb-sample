@@ -10,7 +10,8 @@
 * [LINE Botをサーバーレスで開発！Google Apps ScriptとLINE Messaging APIを使ってチャットボットを作ってみた](http://inside.pixiv.net/entry/2016/11/14/150000)
 
 ## 講義資料
-https://drive.google.com/file/d/0B7tvfRTEjlJoSTBYTGkyZ21pWlk/view?usp=sharing
+* https://drive.google.com/file/d/0B7tvfRTEjlJoSTBYTGkyZ21pWlk/view?usp=sharing
+* http://tamanobi.hatenablog.com/entry/2017/03/19/100000
 
 ## ライセンス
 MIT
