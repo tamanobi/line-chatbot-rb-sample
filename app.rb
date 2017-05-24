@@ -58,10 +58,11 @@ post '/callback' do
     when Line::Bot::Event::Message
       case event.type
       when Line::Bot::Event::MessageType::Text
-        message = {
-          type: 'text',
-          text: event.message['text']
-        }
+        # message = {
+        #   type: 'text',
+        #   text: event.message['text']
+        # }
+        list = {"あ" => 100, "い" => 200, "う" => 300}
         client.reply_message(event['replyToken'], message)
       when Line::Bot::Event::MessageType::Image, Line::Bot::Event::MessageType::Video
         response = client.get_message_content(event.message['id'])
@@ -69,14 +70,18 @@ post '/callback' do
         tf.write(response.body)
       end
     when Line::Bot::Event::Follow
-        message = [{
+        # message = [{
+        #   type: 'text',
+        #   text: '追加ありがと！'
+        # },
+        # {
+        #   type: 'text',
+        #   text: event['source']['userId']
+        # }]
+        message = {
           type: 'text',
-          text: '追加してくれてありがと！'
-        },
-        {
-          type: 'text',
-          text: event['source']['userId']
-        }]
+          text: '友達追加ありがとー。'
+        }
         File.open("friend.txt", "a") do |f|
             f.puts event['source']['userId']+"\n"
         end
