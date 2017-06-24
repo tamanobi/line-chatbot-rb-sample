@@ -59,30 +59,23 @@ post '/callback' do
       case event.type
       when Line::Bot::Event::MessageType::Text
 
-        response = client.get_message_content("<messageId>")
+        response = event.message['text']
 
         case response
-        when response = {
-          type: 'text',
-          text: 'あ'
-        }
+        when response = 'あ'
         message = {
           type: 'text',
           text: 'text'
         }
         client.reply_message(event['replyToken'], message)
-
-      when response = {
-        type: 'text',
-        text: 'い'
-      }
+      when response = 'い'
       message = {
         type: 'text',
         text: 'text1'
       }
       client.reply_message(event['replyToken'], message)
+    end
 
-    end        
       when Line::Bot::Event::MessageType::Image, Line::Bot::Event::MessageType::Video
         response = client.get_message_content(event.message['id'])
         tf = Tempfile.open("content")
