@@ -77,17 +77,18 @@
       when response = '青い靴がほしいな'
       message = {
         type : 'template',
-        altText : 'こちらの〇〇はいかがですか？',
-        template : [
+        altText : 'this is a buttons template',
+        template : {
           type : 'buttons',
           thumbnailImageUrl : 'https://' . $_SERVER['SERVER_NAME'] . '/img1.jpg',
           title : 'お探ししました',
           text : 'こちらはいかがですか？',
-          actions => [
-          type => 'postback',
-          label => '購入する',
-          data => 'action=buy&itemid=123'
-          ]
+          actions : {
+          type : 'postback',
+          label : 'buy',
+          data : 'action=buy&itemid=123'
+          }
+        }
       }
       client.reply_message(event['replyToken'], message)
     end
