@@ -60,7 +60,6 @@
         when Line::Bot::Event::MessageType::Text
 
           response = event.message['text']
-
           case response
           when response = 'あ'
           message = {
@@ -68,33 +67,32 @@
             text: 'text'
           }
           client.reply_message(event['replyToken'], message)
-        when response = 'い'
-        message = {
-          type: 'text',
-          text: 'text1'
-        }
-        client.reply_message(event['replyToken'], message)
-      when response = '青い靴がほしいな'
-      message = {
-        type : 'template',
-        altText : 'this is a buttons template',
-        template : {
-          type : 'buttons',
-          thumbnailImageUrl : 'https://your-chatbotline.herokuapp.com/img1.jpg',
-          title : 'お探ししました',
-          text : 'こちらはいかがですか？',
-          actions : [
-            {
-              type : 'postback',
-              label : 'Buy',
-              data : 'action=buy&itemid=123'
+          when response = 'い'
+          message = {
+            type: 'text',
+            text: 'text1'
+          }
+          client.reply_message(event['replyToken'], message)
+          when response = '青い靴がほしいな'
+            message = {
+              type : 'template',
+              altText : 'this is a buttons template',
+              template : {
+                type : 'buttons',
+                thumbnailImageUrl : 'https://github.com/tomitomi0830/line-chatbot-rb-sample/blob/master/img1.jpg',
+                title : 'お探ししました',
+                text : 'こちらはいかがですか？',
+                actions : [
+                  {
+                    type : 'postback',
+                    label : 'Buy',
+                    data : 'action=buy&itemid=123'
+                  }
+                ]
+              }
             }
-          ]
-        }
-      }
-      client.reply_message(event['replyToken'], message)
-    end
-
+            client.reply_message(event['replyToken'], message)
+          end
         when Line::Bot::Event::MessageType::Image, Line::Bot::Event::MessageType::Video
           response = client.get_message_content(event.message['id'])
           tf = Tempfile.open("content")
