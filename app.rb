@@ -80,14 +80,16 @@
         altText : 'this is a buttons template',
         template : {
           type : 'buttons',
-          thumbnailImageUrl : 'https://' . $_SERVER['SERVER_NAME'] . '/img1.jpg',
+          thumbnailImageUrl : 'https://your-chatbotline.herokuapp.com/img1.jpg',
           title : 'お探ししました',
           text : 'こちらはいかがですか？',
-          actions : {
-          type : 'postback',
-          label : 'buy',
-          data : 'action=buy&itemid=123'
-          }
+          actions : [
+            {
+              type : 'postback',
+              label : 'Buy',
+              data : 'action=buy&itemid=123'
+            }
+          ]
         }
       }
       client.reply_message(event['replyToken'], message)
