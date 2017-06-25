@@ -80,16 +80,16 @@ post '/callback' do
               type : 'confirm',
               text : 'こんにちわ 何かご用ですか？',
               actions : [
-                [
+                {                            
                   type : 'message',
                   label : 'はい',
                   text : 'はい'
-                ],
-                [
+                },
+                {
                   type : 'message',
                   label : 'いいえ',
                   text : 'いいえ'
-                ]
+                ｝
               ]
             }
           }
