@@ -72,6 +72,25 @@ post '/callback' do
             text: 'text1'
           }
           client.reply_message(event['replyToken'], message)
+          when response = '青い靴がほしいな'
+          message = {
+            type : 'template',
+            altText : 'this is a buttons template',
+            template : {
+              type : 'buttons',
+              thumbnailImageUrl : 'https://github.com/tomitomi0830/line-chatbot-rb-sample/blob/master/img1.jpg',
+              title : 'お探ししました',
+              text : 'こちらはいかがですか？',
+              actions : [
+                {
+                  type : 'postback',
+                  label : 'Buy',
+                  data : 'action=buy&itemid=123'
+                }
+              ]
+            }
+          }
+          client.reply_message(event['replyToken'], message)
       end
       when Line::Bot::Event::MessageType::Image, Line::Bot::Event::MessageType::Video
         response = client.get_message_content(event.message['id'])
