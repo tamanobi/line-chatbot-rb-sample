@@ -80,7 +80,7 @@ post '/callback' do
               type : 'confirm',
               text : 'こんにちわ 何かご用ですか？',
               actions : [
-                {                            
+                {
                   type : 'message',
                   label : 'はい',
                   text : 'はい'
@@ -89,7 +89,7 @@ post '/callback' do
                   type : 'message',
                   label : 'いいえ',
                   text : 'いいえ'
-                ｝
+                }
               ]
             }
           }
