@@ -79,15 +79,8 @@ post '/callback' do
             template : {
               type : 'buttons',
               thumbnailImageUrl : 'https://github.com/tomitomi0830/line-chatbot-rb-sample/blob/master/img1.jpg',
-              title : 'お探ししました',
-              text : 'こちらはいかがですか？',
-              actions : [
-                {
-                  type : 'postback',
-                  label : 'Buy',
-                  data : 'action=buy&itemid=123'
-                }
-              ]
+              title : 'Menu',
+              text : 'Please select',
             }
           }
           client.reply_message(event['replyToken'], message)
