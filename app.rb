@@ -88,13 +88,13 @@ post '/callback' do
             text: 'なんのごようですか？'
             }
         client.reply_message(event['replyToken'], message)
-        when response = 'こんにちわ'
+        when response = 'スニーカーが欲しいな'
           message = {
             type: 'template',
             altText: 'this is a buttons template',
             template: {
                 type: 'buttons',
-                thumbnailImageUrl: '',
+                thumbnailImageUrl: 'https://' . $_SERVER['SERVER_NAME'] . '/img1.jpg',
                 title: 'Menu',
                 text: 'Please select',
                 actions: [
