@@ -94,6 +94,7 @@ post '/callback' do
             altText: 'this is a buttons template',
             template: {
                 type: 'buttons',
+                thumbnailImageUrl: 'https://github.com/tomitomi0830/line-chatbot-rb-sample/blob/master/img1.jpg',
                 title: 'Menu',
                 text: 'Please select',
                 actions: [
