@@ -72,28 +72,6 @@ post '/callback' do
             text: 'かしこまりました。また声をかけてください'
           }
           client.reply_message(event['replyToken'], message)
-          when response = 'こんにちは'
-          message = {
-            type : 'template',
-            altText : 'こんにちわ 何かご用ですか？（はい／いいえ）',
-            template : {
-              type : 'confirm',
-              text : 'こんにちわ 何かご用ですか？',
-              actions : [
-                {
-                  type : 'message',
-                  label : 'はい',
-                  text : 'はい'
-                },
-                {
-                  type : 'message',
-                  label : 'いいえ',
-                  text : 'いいえ'
-                }
-              ]
-            }
-          }
-          client.reply_message(event['replyToken'], message)
       end
       when Line::Bot::Event::MessageType::Image, Line::Bot::Event::MessageType::Video
         response = client.get_message_content(event.message['id'])
