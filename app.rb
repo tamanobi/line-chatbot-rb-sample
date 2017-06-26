@@ -1,4 +1,3 @@
-
 require 'sinatra'
 require 'line/bot'
 
@@ -61,6 +60,26 @@ post '/callback' do
       when Line::Bot::Event::MessageType::Text
         response = event.message['text']
         case response
+        when response = 'こんにちは'
+            message = {
+                type: 'template',
+                text: 'こんにちわ 何かご用ですか？（はい／いいえ）',
+                template: 'confirm',
+                text: '何かご用ですか？',
+                actions: [
+                    {
+                      type: 'message',
+                      label: 'はい',
+                      text:  'はい'
+                    },
+                    {
+                      type: 'message',
+                      label: 'いいえ',
+                      text:  'いいえ'                      
+                    }
+                ]
+            }
+        client.reply_message(event['replyToken'], message)          
         when response = 'はい'
             message = {
                 type: 'text',
