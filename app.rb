@@ -88,6 +88,29 @@ post '/callback' do
             text: 'なんのごようですか？'
             }
         client.reply_message(event['replyToken'], message)
+        when response = 'スニーカーが欲しいな'
+          message = {
+            type: 'template',
+            altText: 'this is a buttons template',
+            template: {
+                type: 'buttons',
+                title: 'Menu',
+                text: 'Please select',
+                actions: [
+                  {
+                    type: 'postback',
+                    label: '購入する',
+                    data:  'value'
+                  },
+                  {
+                    type: 'postback',
+                    label: '購入しない',
+                    text:  'value'                      
+                  }
+                ]
+              }
+            }
+        client.reply_message(event['replyToken'], message)    
         else
             message = {
                 type: 'text',
