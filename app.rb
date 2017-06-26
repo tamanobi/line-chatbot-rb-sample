@@ -94,19 +94,19 @@ post '/callback' do
               altText: 'this is a buttons template',
               template: {
                 type: 'buttons'
-                thumbnailImageUrl: 'https://github.com/tomitomi0830/line-chatbot-rb-sample/blob/master/img1.jpg',
+                thumbnailImageUrl: 'https://' . $_SERVER['SERVER_NAME'] . '/img1.jpg',
                 title: 'Menu',
                 text: 'Please select',
                 actions: [
                   {
                     type: 'postback',
                     label: 'Buy',
-                    data:  'action=buy&itemid=123'
+                    text:  '購入する'
                   },
                   {
                     type: 'postback',
                     label: 'Add to cart',
-                    data:  'action=add&itemid=123'                      
+                    data:  'キープしておく'                      
                   }
                 ]
               }
