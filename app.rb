@@ -105,7 +105,7 @@ post '/callback' do
                   {
                     type: 'postback',
                     label: '購入しない',
-                    text:  'value'                      
+                    data:  'value'                      
                   }
                 ]
               }
