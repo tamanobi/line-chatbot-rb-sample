@@ -63,7 +63,7 @@ post '/callback' do
         when response = 'こんにちは'
             message = {
                 type: 'template',
-                text: 'こんにちわ 何かご用ですか？（はい／いいえ）',
+                altText: 'こんにちわ 何かご用ですか？（はい／いいえ）',
                 template: 'confirm',
                 text: '何かご用ですか？',
                 actions: [
