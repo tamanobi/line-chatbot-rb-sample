@@ -84,8 +84,32 @@ post '/callback' do
         client.reply_message(event['replyToken'], message)          
         when response = 'はい'
           message = {
-                type: 'text',
-                text: 'なんのごようですか？'
+            type: 'text',
+            text: 'なんのごようですか？'
+            }
+        client.reply_message(event['replyToken'], message)
+        when response = 'こんにちわ'
+          message = {
+            type: 'template',
+            altText: 'this is a buttons template',
+            template: {
+                type: 'buttons',
+                thumbnailImageUrl: '',
+                title: 'Menu',
+                text: 'Please select',
+                actions: [
+                  {
+                    type: 'message',
+                    label: '買う',
+                    text:  '買う'
+                  },
+                  {
+                    type: 'message',
+                    label: 'やめる',
+                    text:  'やめる'                      
+                  }
+                ]
+              }
             }
         client.reply_message(event['replyToken'], message)    
         else
