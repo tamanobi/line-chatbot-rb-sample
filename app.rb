@@ -1,3 +1,4 @@
+
 require 'sinatra'
 require 'line/bot'
 
@@ -58,21 +59,21 @@ post '/callback' do
     when Line::Bot::Event::Message
       case event.type
       when Line::Bot::Event::MessageType::Text
-          response = event.message['text']
-          case response
-          when response = 'はい'
-          message = {
-            type: 'text',
-            text: 'なんのごようですか？'
-          }
-          client.reply_message(event['replyToken'], message)
-        when response = 'いいえ'
-          message = {
-            type: 'text',
-            text: 'かしこまりました。また声をかけてください'
-          }
-          client.reply_message(event['replyToken'], message)
-      end
+        response = event.message['text']
+        case response
+        when response = 'はい'
+            message = {
+                type: 'text',
+                text: 'なんのごようですか？'
+            }
+        client.reply_message(event['replyToken'], message)
+        else
+            message = {
+                type: 'text',
+                text: 'は？'
+            }
+        client.reply_message(event['replyToken'], message)      
+        end                    
       when Line::Bot::Event::MessageType::Image, Line::Bot::Event::MessageType::Video
         response = client.get_message_content(event.message['id'])
         tf = Tempfile.open("content")
