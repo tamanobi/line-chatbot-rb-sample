@@ -87,31 +87,7 @@ post '/callback' do
                 type: 'text',
                 text: 'なんのごようですか？'
             }
-        client.reply_message(event['replyToken'], message)
-        when response = 'スニーカーが欲しいな'
-          message = {
-              type: 'template',
-              altText: 'this is a buttons template',
-              template: {
-                type: 'buttons'
-                thumbnailImageUrl: 'https://' . $_SERVER['SERVER_NAME'] . '/img1.jpg',
-                title: 'Menu',
-                text: 'Please select',
-                actions: [
-                  {
-                    type: 'postback',
-                    label: 'Buy',
-                    text:  '購入する'
-                  },
-                  {
-                    type: 'postback',
-                    label: 'Add to cart',
-                    data:  'キープしておく'                      
-                  }
-                ]
-              }
-            }            
-        client.reply_message(event['replyToken'], message)           
+        client.reply_message(event['replyToken'], message)         
         else
             message = {
                 type: 'text',
