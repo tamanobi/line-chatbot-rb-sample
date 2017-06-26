@@ -98,14 +98,14 @@ post '/callback' do
                 text: 'Please select',
                 actions: [
                   {
-                    type: 'postback',
+                    type: 'message',
                     label: '購入する',
-                    data:  'value'
+                    text:  '購入する'
                   },
                   {
-                    type: 'postback',
+                    type: 'message',
                     label: '購入しない',
-                    data:  'value'                      
+                    text:  '購入しない'                      
                   }
                 ]
               }
