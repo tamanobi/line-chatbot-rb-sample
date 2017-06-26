@@ -61,27 +61,29 @@ post '/callback' do
         response = event.message['text']
         case response
         when response = 'こんにちは'
-            message = {
-                type: 'template',
-                altText: 'こんにちわ 何かご用ですか？（はい／いいえ）',
-                template: 'confirm',
+          message = {
+            type: 'template',
+            altText: 'こんにちわ 何かご用ですか？（はい／いいえ）',
+            template: {
+                type: 'confirm',
                 text: '何かご用ですか？',
                 actions: [
-                    {
-                      type: 'message',
-                      label: 'はい',
-                      text:  'はい'
-                    },
-                    {
-                      type: 'message',
-                      label: 'いいえ',
-                      text:  'いいえ'                      
-                    }
+                  {
+                    type: 'message',
+                    label: 'はい',
+                    text:  'はい'
+                  },
+                  {
+                    type: 'message',
+                    label: 'いいえ',
+                    text:  'いいえ'                      
+                  }
                 ]
+              }
             }
         client.reply_message(event['replyToken'], message)          
         when response = 'はい'
-            message = {
+          message = {
                 type: 'text',
                 text: 'なんのごようですか？'
             }
