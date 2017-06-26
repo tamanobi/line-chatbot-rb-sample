@@ -60,7 +60,7 @@ post '/callback' do
       when Line::Bot::Event::MessageType::Text
         response = event.message['text']
         case response
-        when response = 'こんにちは'
+        when response = 'こんにちわ'
           message = {
             type: 'template',
             altText: 'こんにちわ 何かご用ですか？（はい／いいえ）',
@@ -88,6 +88,26 @@ post '/callback' do
                 text: 'なんのごようですか？'
             }
         client.reply_message(event['replyToken'], message)
+      when response = 'スニーカーが欲しいな'
+        message = {
+            type: 'template',
+            thumbnailImageUrl: 'https://github.com/tomitomi0830/line-chatbot-rb-sample/blob/master/img1.jpg',
+            title: 'Menu',
+            text: 'Please select',
+            actions: [
+              {
+                type: 'postback',
+                label: 'Buy',
+                data:  'action=buy&itemid=123'
+              },
+              {
+                type: 'postback',
+                label: 'Add to cart',
+                data:  'action=add&itemid=123'                      
+              }
+            ]
+          }
+      client.reply_message(event['replyToken'], message)           
         else
             message = {
                 type: 'text',
