@@ -71,12 +71,12 @@ post '/callback' do
                   {
                     type: 'message',
                     label: 'Yes',
-                    text:  'うん。'
+                    text:  'Yes'
                   },
                   {
                     type: 'message',
                     label: 'No',
-                    text:  'やっぱりいいや'                      
+                    text:  'No'                      
                   }
                 ]
               }
