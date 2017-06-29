@@ -82,7 +82,7 @@ post '/callback' do
               }
             }
         client.reply_message(event['replyToken'], message)          
-        when response = 'うん'
+        when response = 'Yes'
           message = {
             type: 'text',
             text: 'お話きくよ'
@@ -106,7 +106,7 @@ post '/callback' do
             text: 'いつでも話しかけね！'
             }
         client.reply_message(event['replyToken'], message)
-        when response = 'やっぱりいいや'
+        when response = 'No'
           message = {
             type: 'text',
             text: 'いつでも聞くよ！またね！'
