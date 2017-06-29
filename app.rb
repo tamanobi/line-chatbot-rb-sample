@@ -111,7 +111,8 @@ post '/callback' do
             type: 'text',
             text: 'いつでも聞くよ！またね！'
             }
-        client.reply_message(event['replyToken'], message)              when response = 'スニーカーが欲しいな'
+        client.reply_message(event['replyToken'], message)
+        when response = 'スニーカーが欲しいな'
           message = {
             type: 'template',
             altText: 'this is a buttons template',
@@ -138,7 +139,7 @@ post '/callback' do
         else
             message = {
                 type: 'text',
-                text: 'は？'
+                text: 'ばかなの？'
             }
         client.reply_message(event['replyToken'], message)      
         end
