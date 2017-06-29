@@ -60,35 +60,58 @@ post '/callback' do
       when Line::Bot::Event::MessageType::Text
         response = event.message['text']
         case response
-        when response = 'こんにちわ'
+        when response = 'なんかつかれちゃった'
           message = {
             type: 'template',
-            altText: 'こんにちわ 何かご用ですか？（はい／いいえ）',
+            altText: 'May I help you',
             template: {
                 type: 'confirm',
-                text: '何かご用ですか？',
+                text: 'なにかできるかな？',
                 actions: [
                   {
                     type: 'message',
-                    label: 'はい',
-                    text:  'はい'
+                    label: 'Yes',
+                    text:  'うん。'
                   },
                   {
                     type: 'message',
-                    label: 'いいえ',
-                    text:  'いいえ'                      
+                    label: 'No',
+                    text:  'やっぱりいいや'                      
                   }
                 ]
               }
             }
         client.reply_message(event['replyToken'], message)          
-        when response = 'はい'
+        when response = 'うん'
           message = {
             type: 'text',
-            text: 'なんのごようですか？'
+            text: 'お話きくよ'
             }
         client.reply_message(event['replyToken'], message)
-        when response = 'スニーカーが欲しいな'
+        when response = '最近前髪が変っていわれるんだ'
+          message = {
+            type: 'text',
+            text: 'ううん！そんなことないよ！'
+            }
+        client.reply_message(event['replyToken'], message)
+        when response = '本当かな？'
+          message = {
+            type: 'text',
+            text: '本当だよ！'
+            }
+        client.reply_message(event['replyToken'], message)            
+        when response = 'そっかありがとうね'
+          message = {
+            type: 'text',
+            text: 'いつでも話しかけね！'
+            }
+        client.reply_message(event['replyToken'], message)
+        when response = 'やっぱりいいや'
+          message = {
+            type: 'text',
+            text: 'いつでも聞くよ！またね！'
+            }
+        client.reply_message(event['replyToken'], message)              when response = 'スニーカーが欲しいな'
           message = {
             type: 'template',
             altText: 'this is a buttons template',
