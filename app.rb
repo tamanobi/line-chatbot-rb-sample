@@ -58,11 +58,91 @@ post '/callback' do
     when Line::Bot::Event::Message
       case event.type
       when Line::Bot::Event::MessageType::Text
-        message = {
-          type: 'text',
-          text: event.message['text']
-        }
+        response = event.message['text']
+        case response
+        when response = 'なんかつかれちゃった'
+          message = {
+            type: 'template',
+            altText: 'May I help you',
+            template: {
+                type: 'confirm',
+                text: 'なにかできるかな？',
+                actions: [
+                  {
+                    type: 'message',
+                    label: 'Yes',
+                    text:  'Yes'
+                  },
+                  {
+                    type: 'message',
+                    label: 'No',
+                    text:  'No'                      
+                  }
+                ]
+              }
+            }
+        client.reply_message(event['replyToken'], message)          
+        when response = 'Yes'
+          message = {
+            type: 'text',
+            text: 'お話きくよ'
+            }
         client.reply_message(event['replyToken'], message)
+        when response = '最近前髪が変っていわれるんだ'
+          message = {
+            type: 'text',
+            text: 'ううん！そんなことないよ！'
+            }
+        client.reply_message(event['replyToken'], message)
+        when response = '本当かな？'
+          message = {
+            type: 'text',
+            text: '本当だよ！'
+            }
+        client.reply_message(event['replyToken'], message)            
+        when response = 'そっかありがとうね'
+          message = {
+            type: 'text',
+            text: 'いつでも話しかけね！'
+            }
+        client.reply_message(event['replyToken'], message)
+        when response = 'No'
+          message = {
+            type: 'text',
+            text: 'いつでも聞くよ！またね！'
+            }
+        client.reply_message(event['replyToken'], message)
+        when response = 'スニーカーが欲しいな'
+          message = {
+            type: 'template',
+            altText: 'this is a buttons template',
+            template: {
+                type: 'buttons',
+                thumbnailImageUrl: 'https://github.com/tomitomi0830/line-chatbot-rb-sample/blob/master/img1.jpg',
+                title: 'Menu',
+                text: 'Please select',
+                actions: [
+                  {
+                    type: 'message',
+                    label: '購入する',
+                    text:  '購入する'
+                  },
+                  {
+                    type: 'message',
+                    label: '購入しない',
+                    text:  '購入しない'                      
+                  }
+                ]
+              }
+            }
+        client.reply_message(event['replyToken'], message)    
+        else
+            message = {
+                type: 'text',
+                text: 'ばかなの？'
+            }
+        client.reply_message(event['replyToken'], message)      
+        end
       when Line::Bot::Event::MessageType::Image, Line::Bot::Event::MessageType::Video
         response = client.get_message_content(event.message['id'])
         tf = Tempfile.open("content")

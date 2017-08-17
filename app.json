@@ -1,7 +1,7 @@
 {
   "name": "LINE Chatbot Sample",
   "description": "Ruby app using LINE Messaging API",
-  "repository": "https://github.com/tamanobi/line-chatbot-rb-sample",
+  "repository": "https://github.com/tomitomi0830/line-chatbot-rb-sample",
   "env": {
       "LINE_CHANNEL_SECRET" : {
           "description": "A secret key for verifying the LINE account"
